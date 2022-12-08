@@ -7,38 +7,28 @@ has the name ”John”.
 2. Add in this class the accessors and mutators of the attributes name and pos.
 """
 
-class Point2D:
-	def __init__(self, x = 0, y = 0) -> None:
-		self._x = x
-		self._y = y
-
-	def _get_x(self):
-		return self._x
-
-	def _get_y(self):
-		return self._y
-
-	def _set_x(self, x):
-		self._x = x
-
-	def _set_x(self, y):
-		self._y = y
+from ex1 import Point2D
 
 class Robot:
 	def __init__(self, name:str="John", pos:Point2D=Point2D()) -> None:
-		self._name = name
-		self._pos = pos
+		self.__name = name
+		self.__position = pos
 
-	def _get_name(self):
-		return self._name
+	@property
+	def name(self):
+		return self.__name
 
-	def _get_position(self):
-		return self._pos
+	@property
+	def position(self):
+		return self.__position
 
-	def _set_name(self, name):
-		self._name = name
+	@name.setter
+	def name(self, name):
+		self.__name = name
 
-	def _set_position(self, pos):
-		self._pos = pos
+	@position.setter
+	def position(self, pos):
+		self.__position = pos
 
-
+	def __repr__(self) -> str:
+		return f"Robot({self.__name}@({self.position.x},{self.position.y})"
